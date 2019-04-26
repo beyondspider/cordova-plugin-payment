@@ -1,0 +1,17 @@
+{
+  "name": "cordova-plugin-payment",
+  "version": "1.0.0",
+  "description": "payment",
+  "cordova": {
+    "id": "cordova-plugin-payment",
+    "platforms": ["ios", "android", "browser"]
+  },
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-ios",
+    "cordova-android",
+    "cordova-browser"
+  ],
+  "author": "beyondspider",
+  "license": "MIT"
+}
