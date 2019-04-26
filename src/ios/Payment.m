@@ -14,10 +14,17 @@
 - (void)openAlipay:(CDVInvokedUrlCommand*)command
 {
     CDVPluginResult* pluginResult = nil;
-    NSString* echo = [command.arguments objectAtIndex:0];
+    NSString* payUrl = [command.arguments objectAtIndex:0];
 
-    if (echo != nil && [echo length] > 0) {
-        pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:echo];
+    if (payUrl != nil && [payUrl length] > 0) {
+        NSString *url = [NSString stringWithFormat:@"alipayqr://platformapi/startapp?saId=10000007&qrcode=%@", payUrl];
+        
+        BOOL ret =[[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+        if (ret == YES) {
+            pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:payUrl];
+        } else {
+            pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
+        }
     } else {
         pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_ERROR];
     }
